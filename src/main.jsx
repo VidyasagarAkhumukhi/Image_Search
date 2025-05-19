@@ -4,9 +4,11 @@ import App from './App';
 import './index.css';
 import { AppProvider } from './context';
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <AppProvider >
+    <AppProvider>
         <App />
     </AppProvider>
+
 );
 
