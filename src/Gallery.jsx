@@ -1,14 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React from 'react'
+import { useGlobalContext } from './context'
 
-const url = 'https://api.unsplash.com/search/photos?client_id=3y1kjn3zpms6-OhXj_MPkKx9mAj97b_-7TajoG5kXoU&query=Sf90'
+const url = 'https://api.unsplash.com/search/photos?client_id=3y1kjn3zpms6-OhXj_MPkKx9mAj97b_-7TajoG5kXoU'
 
 const Gallery = () => {
+    const { searchTerm } = useGlobalContext()
     const response = useQuery({
-        queryKey: ['images'],
+        queryKey: ['images', searchTerm],
         queryFn: async () => {
-            const result = await axios.get(url)
+            const result = await axios.get(`${url}&query=${searchTerm}`)
 
             return result.data
         }
@@ -40,7 +42,7 @@ const Gallery = () => {
     return (
         <section className='image-container'>
             {results.map((item) => {
-                const url = item?.urls?.regular
+                const url = item?.urls?.small
                 return <img
                     src={url}
                     alt={item.description}

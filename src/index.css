@@ -67,7 +67,7 @@ html {
   --textColor: var(--grey-900);
   --darkModeTransition: color 0.3s ease-in-out, background-color 0.3s ease-in-out; }
 
-/* Checking default theme of the browser and change our sites theme accordingly */
+/* Checking default theme of the browser with CSS and change our sites theme accordingly */
 /* @media (prefers-color-scheme:dark){
   :root{
       --textColor: var(--dark-mode-text-color);
